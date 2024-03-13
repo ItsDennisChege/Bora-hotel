@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bora Hotel Reservation</title>
+    <!-- Add your CSS styling here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Bora Hotel Reservation Form</h2>
+
+    <form action="reservation.php" method="post"  onsubmit="return confirmReservation();">
+        <!-- Personal Information -->
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <!-- Reservation Details -->
+        <label for="checkInDate">Check-in Date:</label>
+        <input type="date" id="check_in_date" name="check_in_date" required>
+
+        <label for="checkOutDate">Check-out Date:</label>
+        <input type="date" id="check_out_date" name="check_out_date" required>
+
+        <label for="adults">Number of Adults:</label>
+        <input type="number" id="adults" name="adults" min="0" max="5">
+
+        <label for="children">Number of Children:</label>
+        <input type="number" id="children" name="children" min="0" max="5">
+
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required onchange="calculateTotal()">
+        <option value="standard">Standard Room - $150 per night</option>
+        <option value="deluxe">Deluxe Room - $250 per night</option>
+        <option value="suite">Suites</option>
+        <optgroup label="Suite Types">
+          <option value="business">Business Suite - $1000 per night</option>
+          <option value="premium">Premium Suite - $600 per night</option>
+          <option value="presidential">Presidential Suite - $5000 per night</option>
+        </optgroup>
+        <option value="executive">Executive Room - $320 per night</option>
+        </select>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="book">Book</option>
+            <option value="reserve">Reserve</option>
+        </select>
+
+        <label for="specialRequests">Special Requests:</label>
+        <textarea id="specialRequests" name="specialRequests" rows="4"></textarea>
+
+        <!-- Additional Services -->
+        <!--<label>Additional Services (Optional):</label>
+        <input type="checkbox" id="airportShuttle" name="services[]" value="airportShuttle">
+        <label for="airportShuttle">Airport Shuttle</label>
+        
+        <input type="checkbox" id="breakfastPackage" name="services[]" value="breakfastPackage">
+        <label for="breakfastPackage">Breakfast Package</label>
+        
+        <input type="checkbox" id="spaServices" name="services[]" value="spaServices">
+        <label for="spaServices">Spa Services</label>
+        
+        <input type="checkbox" id="toursActivities" name="services[]" value="toursActivities">
+        <label for="toursActivities">Tours/Activities</label>-->
+        <!-- Submit Button -->
+        <button type="submit">Submit Reservation</button>
+    </form>
+
+</body>
+<script>
+    function confirmReservation() {
+        // You can add additional client-side validation here if needed
+        return confirm("Are you sure you want to submit this reservation?");
+    }
+</script>
+
+</html>
